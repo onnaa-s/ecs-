@@ -1,0 +1,14 @@
+from microbit import *
+display.show("3")
+sleep(1000)
+display.show("2")
+sleep(1000)
+display.show("1")
+sleep(1000)
+
+x = button_a.get_presses()
+
+if x > 9:
+    display.show(Image.TSHIRT)
+else:
+    display.scroll(str(x))
