@@ -1,0 +1,9 @@
+from microbit import *
+import random
+answers = ["Pizza","Burger","Salad"]
+
+while True:
+  if button_a.was_pressed():
+    count = len(answers)
+    index = random.randrange(count)
+    display.scroll(answers[index])
