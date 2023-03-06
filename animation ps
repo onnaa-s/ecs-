@@ -1,0 +1,110 @@
+import simplegui
+import random
+
+x=450
+y=0
+m=320
+n=0
+s=0
+
+def draw_handler(canvas):
+    global x
+    global y
+    global m
+    global n
+    global s
+    
+    #move person
+    x = x - 5
+    if x<320:
+        x=320
+    canvas.draw_line((0,400),(400,300),5,"Black")
+    canvas.draw_line((400,300),(700,315),5,"Black")
+    canvas.draw_line((700,315),(400,600),5,"Black")
+    canvas.draw_polygon([(380,400),(420,400),(420,100),(380,100)],2,"black","brown")
+    canvas.draw_polygon([(490,400),(510,400),(510,50),(490,50)],2,"black","brown")
+    canvas.draw_polygon([(580,400),(610,400),(610,100),(580,100)],2,"black","brown")
+    canvas.draw_polygon([(0,600),(0,400),(400,300),(400,300),(700,315),(400,600)],5,"tan","Tan")
+    canvas.draw_circle((50,350),65,2,"lightgreen","lightgreen")
+    canvas.draw_circle((125,335),60,2,"lightgreen","lightgreen")
+    canvas.draw_circle((200,320),58,2,"lightgreen","lightgreen")
+    canvas.draw_circle((0,355),65,2,"lightgreen","lightgreen")
+    canvas.draw_circle((300,300),45,2,"lightgreen","lightgreen")
+    canvas.draw_circle((250,325),25,2,"lightgreen","lightgreen")
+    canvas.draw_circle((375,290),40,2,"lightgreen","lightgreen")
+    canvas.draw_circle((435,295),35,2,"lightgreen","lightgreen")
+    canvas.draw_circle((490,300),30,2,"lightgreen","lightgreen")
+    canvas.draw_circle((530,305),28,2,"lightgreen","lightgreen")
+    canvas.draw_circle((570,305),25,2,"lightgreen","lightgreen")
+    canvas.draw_circle((590,310),20,2,"lightgreen","lightgreen")
+    canvas.draw_polygon([(700,315),(600,600),(400,600)],1,"green","lightgreen")
+    canvas.draw_circle((400,20),100,3,"green","green")
+    canvas.draw_circle((500,20),75,3,"green","green")
+    canvas.draw_circle((600,20),100,3,"green","green")
+    canvas.draw_circle((s,s),150,3,"yellow","yellow")
+    
+    cupacke = canvas.draw_circle((300,450-y),20,1,"black","pink")
+    canvas.draw_polygon([(280,450-y),(320,450-y),(315,470-y),(285,470-y)],1,"black","yellow")
+   
+    canvas.draw_circle((x,300),30,2,"black","black")
+    canvas.draw_line((x,320),(x,400),10,"black")
+    canvas.draw_line((x,400),(x+20,440),10,"black")
+    canvas.draw_line((x,400),(x-20,440),10,"black")
+    canvas.draw_line((x,350),(x-20,380),10,"black")
+    #cupcake goes up
+    if y<150 and x<321:
+        y=y+5  
+
+#after cupcake is eaten
+    if y>=150 and x<321:
+        canvas.draw_line((0,400),(400,300),5,"Black")
+        canvas.draw_line((400,300),(700,315),5,"Black")
+        canvas.draw_line((700,315),(400,600),5,"Black")
+        canvas.draw_polygon([(380,400),(420,400),(420,100),(380,100)],2,"black","brown")
+        canvas.draw_polygon([(490,400),(510,400),(510,50),(490,50)],2,"black","brown")
+        canvas.draw_polygon([(580,400),(610,400),(610,100),(580,100)],2,"black","brown")
+        canvas.draw_polygon([(0,600),(0,400),(400,300),(400,300),(700,315),(400,600)],5,"tan","Tan")
+        canvas.draw_circle((50,350),65,2,"lightgreen","lightgreen")
+        canvas.draw_circle((125,335),60,2,"lightgreen","lightgreen")
+        canvas.draw_circle((200,320),58,2,"lightgreen","lightgreen")
+        canvas.draw_circle((0,355),65,2,"lightgreen","lightgreen")
+        canvas.draw_circle((300,300),45,2,"lightgreen","lightgreen")
+        canvas.draw_circle((250,325),25,2,"lightgreen","lightgreen")
+        canvas.draw_circle((375,290),40,2,"lightgreen","lightgreen")
+        canvas.draw_circle((435,295),35,2,"lightgreen","lightgreen")
+        canvas.draw_circle((490,300),30,2,"lightgreen","lightgreen")
+        canvas.draw_circle((530,305),28,2,"lightgreen","lightgreen")
+        canvas.draw_circle((570,305),25,2,"lightgreen","lightgreen")
+        canvas.draw_circle((590,310),20,2,"lightgreen","lightgreen")
+        canvas.draw_polygon([(700,315),(600,600),(400,600)],1,"green","lightgreen")
+        canvas.draw_circle((400,20),100,3,"green","green")
+        canvas.draw_circle((500,20),75,3,"green","green")
+        canvas.draw_circle((600,20),100,3,"green","green")
+     
+        
+        #move person out frame
+        if m<=321 and n<=150:
+            m=m-5
+            n=n+2
+            canvas.draw_circle((m,300+n),30,2,"black","black")
+            canvas.draw_line((m,320+n),(m,400+n),10,"black")
+            canvas.draw_line((m,400+n),(m+20,440+n),10,"black")
+            canvas.draw_line((m,400+n),(m-20,440+n),10,"black")
+            canvas.draw_line((m,350+n),(m-20,380+n),10,"black")
+       
+        #move sun    
+        if m<=0:
+            s=s-3
+        
+        #nighttime
+        if s==-99:
+            frame.set_canvas_background("navy")
+        #stars
+            for i in range(0,400,20):
+                canvas.draw_point([i,i],"Yellow")
+        
+        
+frame = simplegui.create_frame('Forest', 600, 600)
+frame.set_canvas_background("Teal")
+frame.set_draw_handler(draw_handler)
+frame.start()
